@@ -10,5 +10,6 @@ namespace ETrade.Rep.Abstract
 {
     public interface IFoodRepository : IBaseRepository<Foods>
     {
+        List<Foods> GetFoods();
     }
 }

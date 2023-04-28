@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ETrade.Ent\ETrade.Ent.csproj" />
+    <ProjectReference Include="..\ETrade.UOW\ETrade.UOW.csproj" />
   </ItemGroup>
 
 </Project>

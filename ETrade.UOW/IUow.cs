@@ -12,6 +12,13 @@ namespace ETrade.UOW
         // değişkenler
         ICatRepos catRepos { get; }
         IProductRepos productRepos { get; }
+        ICategoryRepository categoryRepository { get; }
+        IFoodRepository foodRepository { get; }
+        IOrderDetailRepository orderDetailRepository { get; }
+        IOrderRepository orderRepository { get; }
+        IPropertyRepository propertyRepository { get; }
+        IShippingAddressRepository shippingAddressRepository { get; }
+        IUserRepository userRepository { get; }
 
         void Commit();
     }
