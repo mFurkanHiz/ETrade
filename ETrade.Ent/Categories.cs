@@ -8,5 +8,7 @@ namespace ETrade.Ent
 {
     public class Categories : Base
     {
-        public int CategoryName { get; set; }
+        public string CategoryName { get; set; }
+        public ICollection<Foods> Foods { get; set; }   
     }
+}

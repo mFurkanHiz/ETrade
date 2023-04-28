@@ -10,5 +10,6 @@ namespace ETrade.Ent
     {
         public string PropertyName { get; set; }
         public decimal Price { get; set; }
+        public ICollection<Foods> Foods { get; set; }
     }
 }

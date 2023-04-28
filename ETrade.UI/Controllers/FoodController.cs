@@ -6,16 +6,14 @@ namespace ETrade.UI.Controllers
 {
     public class FoodController : BaseController
     {
-        private readonly ProductsModel model;
-        public FoodController(IUow uow, ProductsModel model) : base(uow)
+   
+        public FoodController(IUow uow) : base(uow)
         {
-            this.model = model;
+
         }
 
         public IActionResult List()
         {
-
-
             return View(uow.foodRepository.GetFoods());
         }
     }

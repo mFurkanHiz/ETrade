@@ -10,8 +10,7 @@ namespace ETrade.UOW
     public interface IUow
     {
         // değişkenler
-        ICatRepos catRepos { get; }
-        IProductRepos productRepos { get; }
+
         ICategoryRepository categoryRepository { get; }
         IFoodRepository foodRepository { get; }
         IOrderDetailRepository orderDetailRepository { get; }

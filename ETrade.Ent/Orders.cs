@@ -12,6 +12,6 @@ namespace ETrade.Ent
         public Guid ShippingAddressId { get; set; }
         public Guid OrderDetailsId { get; set; }
         public decimal TotalPrice { get; set; }
-        public bool IsDelivered { get; set; }
+        public bool isDelivered { get; set; }
     }
 }

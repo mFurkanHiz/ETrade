@@ -11,18 +11,35 @@ namespace ETrade.UOW
     public class Uow : IUow
     {
         // özellik olduğu için arrow kullanıldı metot değil property
-        public ICatRepos catRepos { get; }
-
-        public IProductRepos productRepos { get; }
+        
+        public ICategoryRepository categoryRepository { get; }
+        public IFoodRepository foodRepository { get; }
+        public IOrderDetailRepository orderDetailRepository { get; }
+        public IOrderRepository orderRepository { get; }
+        public IPropertyRepository propertyRepository { get; }
+        public IShippingAddressRepository shippingAddressRepository { get; }
+        public IUserRepository userRepository { get; }
 
         private readonly Context context;
 
-        public Uow(Context context, ICatRepos catRepos, IProductRepos productRepos)
+        public Uow(Context context, 
+            ICategoryRepository categoryRepository,
+            IFoodRepository foodRepository,
+            IOrderDetailRepository orderDetailRepository,
+            IOrderRepository orderRepository,
+            IPropertyRepository propertyRepository,
+            IShippingAddressRepository shippingAddressRepository,
+            IUserRepository userRepository)
         {
             // ctorda çağırmak yerine newleyebiliriz ama tavsiye edilmez
             this.context = context;
-            this.catRepos = catRepos;
-            this.productRepos = productRepos;
+            this.categoryRepository = categoryRepository;
+            this.foodRepository = foodRepository;
+            this.orderDetailRepository = orderDetailRepository;
+            this.orderRepository = orderRepository;
+            this.propertyRepository = propertyRepository;
+            this.shippingAddressRepository = shippingAddressRepository;
+            this.userRepository = userRepository;
         }
 
         public void Commit()
