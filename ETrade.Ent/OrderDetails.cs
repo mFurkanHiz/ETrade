@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ETrade.Ent
 {
-    public class Categories : Base
+    public class OrderDetails : Base
     {
-        public int CategoryName { get; set; }
+        public Guid FoodId { get; set; }
     }
+}

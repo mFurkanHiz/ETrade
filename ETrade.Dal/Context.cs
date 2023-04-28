@@ -15,7 +15,12 @@ namespace ETrade.Dal
 
         }
         // 
-        public DbSet<Products> Products { get; set; }
+        public DbSet<Foods> Foods { get; set; }
+        public DbSet<Users> Users { get; set; }
         public DbSet<Categories> Categories { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<Orders> Orders { get; set; }
+        public DbSet<Properties> Properties { get; set; }
+        public DbSet<ShippingAddresses> ShippingAddresses { get; set; }
     }
 }
