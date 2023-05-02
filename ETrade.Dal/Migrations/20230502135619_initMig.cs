@@ -26,25 +26,6 @@ namespace ETrade.Dal.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Foods",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FoodName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PropertyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Img = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Foods", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Properties",
                 columns: table => new
                 {
@@ -78,49 +59,25 @@ namespace ETrade.Dal.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CategoriesFoods",
+                name: "Foods",
                 columns: table => new
                 {
-                    CategoriesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FoodsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FoodName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Img = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoriesFoods", x => new { x.CategoriesId, x.FoodsId });
+                    table.PrimaryKey("PK_Foods", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CategoriesFoods_Categories_CategoriesId",
-                        column: x => x.CategoriesId,
+                        name: "FK_Foods_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CategoriesFoods_Foods_FoodsId",
-                        column: x => x.FoodsId,
-                        principalTable: "Foods",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "FoodsProperties",
-                columns: table => new
-                {
-                    FoodsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    propertiesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FoodsProperties", x => new { x.FoodsId, x.propertiesId });
-                    table.ForeignKey(
-                        name: "FK_FoodsProperties_Foods_FoodsId",
-                        column: x => x.FoodsId,
-                        principalTable: "Foods",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_FoodsProperties_Properties_propertiesId",
-                        column: x => x.propertiesId,
-                        principalTable: "Properties",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -144,6 +101,30 @@ namespace ETrade.Dal.Migrations
                         name: "FK_Orders_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FoodsProperties",
+                columns: table => new
+                {
+                    FoodsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PropertiesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FoodsProperties", x => new { x.FoodsId, x.PropertiesId });
+                    table.ForeignKey(
+                        name: "FK_FoodsProperties_Foods_FoodsId",
+                        column: x => x.FoodsId,
+                        principalTable: "Foods",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_FoodsProperties_Properties_PropertiesId",
+                        column: x => x.PropertiesId,
+                        principalTable: "Properties",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -175,14 +156,14 @@ namespace ETrade.Dal.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoriesFoods_FoodsId",
-                table: "CategoriesFoods",
-                column: "FoodsId");
+                name: "IX_Foods_CategoryId",
+                table: "Foods",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FoodsProperties_propertiesId",
+                name: "IX_FoodsProperties_PropertiesId",
                 table: "FoodsProperties",
-                column: "propertiesId");
+                column: "PropertiesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_FoodId",
@@ -199,16 +180,10 @@ namespace ETrade.Dal.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoriesFoods");
-
-            migrationBuilder.DropTable(
                 name: "FoodsProperties");
 
             migrationBuilder.DropTable(
                 name: "OrderDetails");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Properties");
@@ -218,6 +193,9 @@ namespace ETrade.Dal.Migrations
 
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Users");

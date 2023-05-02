@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ETrade.Dal.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230502102719_initMig")]
+    [Migration("20230502135619_initMig")]
     partial class initMig
     {
         /// <inheritdoc />
@@ -24,21 +24,6 @@ namespace ETrade.Dal.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CategoriesFoods", b =>
-                {
-                    b.Property<Guid>("CategoriesId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("FoodsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("CategoriesId", "FoodsId");
-
-                    b.HasIndex("FoodsId");
-
-                    b.ToTable("CategoriesFoods");
-                });
 
             modelBuilder.Entity("ETrade.Ent.Categories", b =>
                 {
@@ -88,13 +73,12 @@ namespace ETrade.Dal.Migrations
                     b.Property<DateTime>("LastUpdated")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("PropertyId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<decimal>("UnitPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Foods");
                 });
@@ -216,29 +200,25 @@ namespace ETrade.Dal.Migrations
                     b.Property<Guid>("FoodsId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("propertiesId")
+                    b.Property<Guid>("PropertiesId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("FoodsId", "propertiesId");
+                    b.HasKey("FoodsId", "PropertiesId");
 
-                    b.HasIndex("propertiesId");
+                    b.HasIndex("PropertiesId");
 
                     b.ToTable("FoodsProperties");
                 });
 
-            modelBuilder.Entity("CategoriesFoods", b =>
+            modelBuilder.Entity("ETrade.Ent.Foods", b =>
                 {
-                    b.HasOne("ETrade.Ent.Categories", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriesId")
+                    b.HasOne("ETrade.Ent.Categories", "Categories")
+                        .WithMany("Foods")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ETrade.Ent.Foods", null)
-                        .WithMany()
-                        .HasForeignKey("FoodsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("ETrade.Ent.OrderDetails", b =>
@@ -281,9 +261,14 @@ namespace ETrade.Dal.Migrations
 
                     b.HasOne("ETrade.Ent.Properties", null)
                         .WithMany()
-                        .HasForeignKey("propertiesId")
+                        .HasForeignKey("PropertiesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ETrade.Ent.Categories", b =>
+                {
+                    b.Navigation("Foods");
                 });
 
             modelBuilder.Entity("ETrade.Ent.Foods", b =>

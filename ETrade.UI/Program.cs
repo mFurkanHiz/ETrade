@@ -28,6 +28,7 @@ builder.Services.AddScoped<Foods>();
 
 
 builder.Services.AddScoped<FoodsModel>();
+builder.Services.AddScoped<AdminModel>();
 
 
 

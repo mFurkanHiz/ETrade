@@ -25,7 +25,6 @@ namespace ETrade.Rep.Concretes
                 Id = x.Id,
                 FoodName = x.FoodName,
                 CategoryId = x.CategoryId,
-                PropertyId = x.PropertyId,
                 Description = x.Description,
                 Img = x.Img,
                 LastUpdated = x.LastUpdated,

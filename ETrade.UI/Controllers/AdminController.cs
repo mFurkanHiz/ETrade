@@ -41,7 +41,7 @@ namespace ETrade.UI.Controllers
             return View("Crud", model);
         }
         [HttpPost]
-        public IActionResult Update(FoodsModel model)
+        public IActionResult Update(AdminModel model)
         {
             uow.foodRepository.Update(model.SelectedFood);
             uow.Commit();
