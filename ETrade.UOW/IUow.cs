@@ -16,7 +16,6 @@ namespace ETrade.UOW
         IOrderDetailRepository orderDetailRepository { get; }
         IOrderRepository orderRepository { get; }
         IPropertyRepository propertyRepository { get; }
-        IShippingAddressRepository shippingAddressRepository { get; }
         IUserRepository userRepository { get; }
 
         void Commit();

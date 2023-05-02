@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ETrade.DTO
 {
-    public class ProductsDTO
+    public class FoodsDTO
     {
         // iki tabloyu bir araya toplayacağız
         public Guid Id { get; set; }
-        public string ProductName { get; set; }
+        public string FoodName { get; set; }
+        public string Properties { get; set; }
         public string CategoryName { get; set; }
-        public decimal UnitPrice { get; set; }
     }
 }

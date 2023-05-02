@@ -10,5 +10,6 @@ namespace ETrade.Rep.Abstract
 {
     public interface IPropertyRepository : IBaseRepository<Properties>
     {
+        List<Properties> GetProperties();
     }
 }

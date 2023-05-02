@@ -16,5 +16,21 @@ namespace ETrade.Rep.Concretes
         {
 
         }
+        public List<Categories> GetCategories()
+        {
+            return Set().Select(x => new Categories
+            {
+                // sol taraf ProductDTO sağ taraf Products
+                Id = x.Id,
+                CategoryName = x.CategoryName,
+                LastUpdated = x.LastUpdated,
+                CreatedDate = x.CreatedDate,
+
+        //                public string CategoryName { get; set; }
+        //public ICollection<Foods> Foods { get; set; }
+
+
+    }).ToList();
+        }
     }
 }

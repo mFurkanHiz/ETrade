@@ -16,5 +16,6 @@ namespace ETrade.Ent
 
         [ForeignKey(nameof(UserId))]
         public Users Users { get; set; }
+        public ICollection<OrderDetails> OrderDetails { get; set; }
     }
 }

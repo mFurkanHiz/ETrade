@@ -2,6 +2,7 @@ using ETrade.Dal;
 using ETrade.Ent;
 using ETrade.Rep.Abstract;
 using ETrade.Rep.Concretes;
+using ETrade.UI.Models.ViewModel;
 using ETrade.UOW;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,18 +14,21 @@ builder.Services.AddControllersWithViews();
 // ADDED
 
 builder.Services.AddDbContext<Context>(options =>
-       options.UseSqlServer(builder.Configuration.GetConnectionString("Personel")));
+       options.UseSqlServer(builder.Configuration.GetConnectionString("ETrade")));
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IFoodRepository, FoodRepository>();
 builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
-builder.Services.AddScoped<IShippingAddressRepository, ShippingAddressRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 builder.Services.AddScoped<IUow, Uow>();
 builder.Services.AddScoped<Foods>();
+
+
+builder.Services.AddScoped<FoodsModel>();
+
 
 
 // ADDED

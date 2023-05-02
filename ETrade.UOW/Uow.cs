@@ -17,7 +17,6 @@ namespace ETrade.UOW
         public IOrderDetailRepository orderDetailRepository { get; }
         public IOrderRepository orderRepository { get; }
         public IPropertyRepository propertyRepository { get; }
-        public IShippingAddressRepository shippingAddressRepository { get; }
         public IUserRepository userRepository { get; }
 
         private readonly Context context;
@@ -28,7 +27,6 @@ namespace ETrade.UOW
             IOrderDetailRepository orderDetailRepository,
             IOrderRepository orderRepository,
             IPropertyRepository propertyRepository,
-            IShippingAddressRepository shippingAddressRepository,
             IUserRepository userRepository)
         {
             // ctorda çağırmak yerine newleyebiliriz ama tavsiye edilmez
@@ -38,7 +36,6 @@ namespace ETrade.UOW
             this.orderDetailRepository = orderDetailRepository;
             this.orderRepository = orderRepository;
             this.propertyRepository = propertyRepository;
-            this.shippingAddressRepository = shippingAddressRepository;
             this.userRepository = userRepository;
         }
 

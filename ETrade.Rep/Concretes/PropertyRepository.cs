@@ -15,5 +15,23 @@ namespace ETrade.Rep.Concretes
         public PropertyRepository(Context context) : base(context)
         {
         }
+        public List<Properties> GetProperties()
+        {
+            return Set().Select(x => new Properties
+            {
+                // sol taraf ProductDTO sağ taraf Products
+                Id = x.Id,
+                PropertyName = x.PropertyName,
+                Price = x.Price,
+                LastUpdated = x.LastUpdated,
+                CreatedDate = x.CreatedDate,
+
+        //          public string PropertyName { get; set; }
+        //          public decimal Price { get; set; }
+        //          public ICollection<Foods> Foods { get; set; }
+
+
+    }).ToList();
+        }
     }
 }

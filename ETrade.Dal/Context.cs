@@ -21,6 +21,12 @@ namespace ETrade.Dal
         public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<Orders> Orders { get; set; }
         public DbSet<Properties> Properties { get; set; }
-        public DbSet<ShippingAddresses> ShippingAddresses { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<OrderDetails>()
+                .HasKey(od => new { od.OrderId, od.FoodId });
+            // bu ikisi kompozit key olacak 
+        }
     }
 }
