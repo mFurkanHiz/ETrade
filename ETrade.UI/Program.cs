@@ -27,6 +27,7 @@ builder.Services.AddScoped<IUow, Uow>();
 builder.Services.AddScoped<Foods>();
 
 
+builder.Services.AddScoped<CategoriesModel>();
 builder.Services.AddScoped<FoodsModel>();
 builder.Services.AddScoped<AdminModel>();
 

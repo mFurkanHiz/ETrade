@@ -17,6 +17,21 @@ namespace ETrade.UI.Controllers
         {
             return View(uow.foodRepository.GetFoods());
         }
+        public IActionResult Create()
+        {
+            model.Text = "Kaydet";
+            model.Head = "Yeni Giriş";
+            model.Class = "btn btn-primary";
+            return View("Crud", model);
+        }
+
+        [HttpPost]
+        public IActionResult Create(FoodsModel m)
+        {
+            uow.foodRepository.Add(m.SelectedFood);
+            uow.Commit();
+            return RedirectToAction("List");
+        }
 
         public IActionResult Update(Guid Id)
         {
@@ -27,37 +42,18 @@ namespace ETrade.UI.Controllers
             return View("Crud", model);
         }
         [HttpPost]
-        public IActionResult Update(FoodsModel model)
+        public IActionResult Update(FoodsModel m)
         {
-            uow.foodRepository.Update(model.SelectedFood);
+            //uow.foodRepository.Update(uow.foodRepository.Find(m.Properties.Id));
+            uow.foodRepository.Update(m.SelectedFood);
             uow.Commit();
             return RedirectToAction("List");
         }
 
-        public IActionResult Delete(Guid id)
+        public IActionResult Delete(Guid Id)
         {
-            //var cat = Uow.catRepos.Find(id);
-            //return View(cat);
-
-            uow.foodRepository.Delete(uow.foodRepository.Find(id));
-            uow.Commit();
-            return RedirectToAction("List");
-        }
-
-        public IActionResult Add()
-        {
-            //Categories cat = new Categories();
-            //return View(cat);
-
-            model.Head = "Yeni Giriş";
-            model.Text = "Kaydet";
-            model.Class = "btn btn-primary";
-            return View("Crud", model);
-        }
-        [HttpPost]
-        public IActionResult Add(FoodsModel model)
-        {
-            uow.foodRepository.Add(model.SelectedFood);
+            //uow.foodRepository.Delete(m.Properties);
+            uow.foodRepository.Delete(uow.foodRepository.Find(Id));
             uow.Commit();
             return RedirectToAction("List");
         }

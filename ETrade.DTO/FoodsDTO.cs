@@ -11,7 +11,5 @@ namespace ETrade.DTO
         // iki tabloyu bir araya toplayacağız
         public Guid Id { get; set; }
         public string FoodName { get; set; }
-        public string Properties { get; set; }
-        public string CategoryName { get; set; }
     }
 }
