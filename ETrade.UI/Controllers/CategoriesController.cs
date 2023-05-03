@@ -6,11 +6,9 @@ namespace ETrade.UI.Controllers
 {
     public class CategoriesController : BaseController
     {
-        private readonly FoodsModel model;
 
-        public AdminController(IUow uow, FoodsModel model) : base(uow)
+        public CategoriesController(IUow uow) : base(uow)
         {
-            this.model = model;
         }
 
         public IActionResult List()
