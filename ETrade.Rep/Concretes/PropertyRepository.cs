@@ -1,5 +1,6 @@
 ﻿using ETrade.Core;
 using ETrade.Dal;
+using ETrade.DTO;
 using ETrade.Ent;
 using ETrade.Rep.Abstract;
 using System;
@@ -15,16 +16,13 @@ namespace ETrade.Rep.Concretes
         public PropertyRepository(Context context) : base(context)
         {
         }
-        public List<Properties> GetProperties()
+        public List<PropertiesDTO> GetProperties()
         {
-            return Set().Select(x => new Properties
+            return Set().Select(x => new PropertiesDTO
             {
                 // sol taraf ProductDTO sağ taraf Products
                 Id = x.Id,
                 PropertyName = x.PropertyName,
-                Price = x.Price,
-                LastUpdated = x.LastUpdated,
-                CreatedDate = x.CreatedDate,
 
         //          public string PropertyName { get; set; }
         //          public decimal Price { get; set; }

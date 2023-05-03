@@ -1,5 +1,6 @@
 ﻿using ETrade.Core;
 using ETrade.Dal;
+using ETrade.DTO;
 using ETrade.Ent;
 using ETrade.Rep.Abstract;
 using System;
@@ -16,21 +17,19 @@ namespace ETrade.Rep.Concretes
         {
 
         }
-        public List<Categories> GetCategories()
+
+        public List<CategoriesDTO> GetCategories()
         {
-            return Set().Select(x => new Categories
+            return Set().Select(x => new CategoriesDTO
             {
                 // sol taraf ProductDTO sağ taraf Products
                 Id = x.Id,
                 CategoryName = x.CategoryName,
-                LastUpdated = x.LastUpdated,
-                CreatedDate = x.CreatedDate,
 
-        //                public string CategoryName { get; set; }
-        //public ICollection<Foods> Foods { get; set; }
+                // public string CategoryName { get; set; }
+                // public ICollection<Foods> Foods { get; set; }
 
-
-    }).ToList();
+            }).ToList();
         }
     }
 }

@@ -17,19 +17,13 @@ namespace ETrade.Rep.Concretes
         {
         }
 
-        public List<Foods> GetFoods()
+        public List<FoodsDTO> GetFoods()
         {
-            return Set().Select(x => new Foods
+            return Set().Select(x => new FoodsDTO
             {
                 // sol taraf ProductDTO sağ taraf Products
                 Id = x.Id,
                 FoodName = x.FoodName,
-                CategoryId = x.CategoryId,
-                Description = x.Description,
-                Img = x.Img,
-                LastUpdated = x.LastUpdated,
-                CreatedDate = x.CreatedDate,
-
 
         //        public string FoodName { get; set; }
         //public Guid CategoryId { get; set; }

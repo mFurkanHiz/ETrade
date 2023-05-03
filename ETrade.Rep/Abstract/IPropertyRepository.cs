@@ -1,4 +1,5 @@
 ﻿using ETrade.Core;
+using ETrade.DTO;
 using ETrade.Ent;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace ETrade.Rep.Abstract
 {
     public interface IPropertyRepository : IBaseRepository<Properties>
     {
-        List<Properties> GetProperties();
+        List<PropertiesDTO> GetProperties();
     }
 }
