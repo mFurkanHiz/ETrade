@@ -1,4 +1,5 @@
-﻿using ETrade.Ent;
+﻿using ETrade.DTO;
+using ETrade.Ent;
 
 namespace ETrade.UI.Models.ViewModel
 {
@@ -9,7 +10,7 @@ namespace ETrade.UI.Models.ViewModel
             SelectedFood = new Foods();
         }
         public Foods SelectedFood { get; set; }
-        public List<Categories> Categories { get; set; }
+        public List<CategoriesDTO> Categories { get; set; }
 
     }
 }
