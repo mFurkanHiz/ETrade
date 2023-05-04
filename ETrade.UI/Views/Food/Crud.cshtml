@@ -13,17 +13,17 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="SelectedFood.Id" />
+            <input type="hidden" asp-for="SelectedFood.FoodId" />
             <div class="form-group">
                 <label asp-for="SelectedFood.FoodName" class="control-label"></label>
                 <input asp-for="SelectedFood.FoodName" class="form-control" />
                 <span asp-validation-for="SelectedFood.FoodName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+ @*           <div class="form-group">
                 <label asp-for="SelectedFood.UnitPrice" class="control-label"></label>
                 <input asp-for="SelectedFood.UnitPrice" class="form-control" />
                 <span asp-validation-for="SelectedFood.UnitPrice" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="SelectedFood.Description" class="control-label"></label>
                 <input asp-for="SelectedFood.Description" class="form-control" />
@@ -35,15 +35,15 @@
                 <span asp-validation-for="SelectedFood.Img" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SelectedFood.LastUpdated" class="control-label"></label>
-                <input asp-for="SelectedFood.LastUpdated" class="form-control" />
-                <span asp-validation-for="SelectedFood.LastUpdated" class="text-danger"></span>
+                <label>Kategori</label>
+                <select name="Foods.CategoryId">
+                    @foreach (var item in Model.Categories)
+                    {
+                        <option class="form-control" value="@item.CategoryId">@item.CategoryName</option>
+                    }
+                </select>
             </div>
-            <div class="form-group">
-                <label asp-for="SelectedFood.CreatedDate" class="control-label"></label>
-                <input asp-for="SelectedFood.CreatedDate" class="form-control" />
-                <span asp-validation-for="SelectedFood.CreatedDate" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <input type="submit" value="@Model.Text" class="@Model.Class" />
             </div>

@@ -9,8 +9,13 @@ namespace ETrade.Ent
 {
     public class Base
     {
-        [Key] // base classlarda key olur öyle olmak zorunda
-        public Guid Id { get; set; }
+
+        
+
+        //[Key] // base classlarda key olur öyle olmak zorunda
+        //public Guid Id { get; set; }
+
+   
         public DateTime LastUpdated { get; set; }
         public DateTime CreatedDate { get; set; }
 

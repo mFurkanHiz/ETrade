@@ -21,7 +21,7 @@ namespace ETrade.Rep.Concretes
             return Set().Select(x => new PropertiesDTO
             {
                 // sol taraf ProductDTO sağ taraf Products
-                Id = x.Id,
+                Id = x.PropertyId,
                 PropertyName = x.PropertyName,
 
         //          public string PropertyName { get; set; }

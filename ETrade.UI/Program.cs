@@ -24,11 +24,13 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 builder.Services.AddScoped<IUow, Uow>();
-builder.Services.AddScoped<Foods>();
+//builder.Services.AddScoped<Foods>();
 
 
 builder.Services.AddScoped<CategoriesModel>();
 builder.Services.AddScoped<FoodsModel>();
+builder.Services.AddScoped<CategoriesModel>();
+builder.Services.AddScoped<PropertiesModel>();
 builder.Services.AddScoped<AdminModel>();
 
 

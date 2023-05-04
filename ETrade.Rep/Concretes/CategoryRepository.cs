@@ -23,7 +23,7 @@ namespace ETrade.Rep.Concretes
             return Set().Select(x => new CategoriesDTO
             {
                 // sol taraf ProductDTO sağ taraf Products
-                Id = x.Id,
+                Id = x.CategoryId,
                 CategoryName = x.CategoryName,
 
                 // public string CategoryName { get; set; }
